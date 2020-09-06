@@ -56,6 +56,11 @@ public class Cliente {
 		this.detallesCliente = detallesCliente;
 	}
 
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + "]";
+	}
+
 	//Relación 1 a 1
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id")
