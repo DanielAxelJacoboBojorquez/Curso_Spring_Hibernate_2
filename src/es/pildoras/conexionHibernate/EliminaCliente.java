@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class InsertaCliente {
+public class EliminaCliente {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -20,16 +20,13 @@ public class InsertaCliente {
 		
 		// 3.- Crear obj (Clientes)
 		try {
-			// INSERT en tabla Cliente y tabla Detalles_Cliente
-			Cliente cliente1=new Cliente("Paco","Gomez","Princesa");
-			DetallesCliente detallescliente1=new DetallesCliente("www.pildorasinformaticas.es","78754","Segundo Cliente");
-			// Asociar los objetos
-			cliente1.setDetallesCliente(detallescliente1);
 			miSession.beginTransaction();
-			// 4.- Ejecutar trasacción SQL
-			miSession.save(cliente1);
+			Cliente elCliente=miSession.get(Cliente.class, 3);
+			if(elCliente!=null) {
+				miSession.delete(elCliente);
+			}
 			miSession.getTransaction().commit();
-			System.out.println("Registro insertado correctamente en BBDD");
+			System.out.println("Registro eliminado correctamente en BBDD");
 			miSession.close();
 		}finally {
 			miFactory.close();
