@@ -36,7 +36,7 @@ public class Cliente {
 		return apellido;
 	}
 
-	public void setApellidos(String apellido) {
+	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
 
@@ -48,6 +48,14 @@ public class Cliente {
 		this.direccion = direccion;
 	}
 	
+	public DetallesCliente getDetallesCliente() {
+		return detallesCliente;
+	}
+
+	public void setDetallesCliente(DetallesCliente detallesCliente) {
+		this.detallesCliente = detallesCliente;
+	}
+
 	//Relación 1 a 1
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id")
