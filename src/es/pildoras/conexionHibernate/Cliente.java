@@ -100,6 +100,8 @@ public class Cliente {
 	@Column(name="direccion")
 	private String direccion;
 	
-	@OneToMany(mappedBy="cliente", cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	// fetch=FetchType.EAGER Devuelve toda la información disponible
+	// fetch=FetchType.LAZY Devuelve la información cuando se necesita 
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="cliente", cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	private List<Pedido> pedidos;
 }
