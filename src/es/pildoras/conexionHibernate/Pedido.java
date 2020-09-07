@@ -1,10 +1,11 @@
 package es.pildoras.conexionHibernate;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.*;
 
-
+@Entity
+@Table(name="pedido")
 public class Pedido {
 	public Pedido(Date fecha) {
 		this.fecha = fecha;
