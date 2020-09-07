@@ -28,14 +28,17 @@ public class ObtenerPedidosCliente {
 			miSession.beginTransaction();
 			// 4.- Ejecutar trasacción SQL
 			// Obtener el Cliente de la tabla Clientes de la BBDD
-			Cliente elCliente=miSession.get(Cliente.class, 6);
+			//Cliente elCliente=miSession.get(Cliente.class, 6);
+			Query<Cliente> consulta=miSession.createQuery("SELECT CL FROM Cliente CL JOIN FETCH CL.pedidos WHERE CL.id=:elClienteId", Cliente.class);
+			consulta.setParameter("elClienteId", 6);
+			Cliente elCliente=consulta.getSingleResult();
 			System.out.println("Cliente:"+elCliente);
-			System.out.println("Pedidos: "+elCliente.getPedidos());
-			miSession.getTransaction().commit();		
+			miSession.getTransaction().commit();	
+			miSession.close();
+			System.out.println("Pedidos: "+elCliente.getPedidos());	
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally {
-			miSession.close();
 			miFactory.close();
 		}
 	}
