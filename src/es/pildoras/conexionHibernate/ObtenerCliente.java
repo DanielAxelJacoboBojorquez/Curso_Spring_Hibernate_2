@@ -25,9 +25,13 @@ public class ObtenerCliente {
 			DetallesCliente detallesDeCliente=miSession.get(DetallesCliente.class, 1);
 			System.out.println(detallesDeCliente);
 			System.out.println(detallesDeCliente.getElCliente());
-			miSession.getTransaction().commit();
-			miSession.close();
+			System.out.println("Ahora vamos a eliminar en cascada");
+			miSession.delete(detallesDeCliente);
+			miSession.getTransaction().commit();		
+		}catch(Exception ex1) {
+			ex1.printStackTrace();
 		}finally {
+			miSession.close();
 			miFactory.close();
 		}
 	}
