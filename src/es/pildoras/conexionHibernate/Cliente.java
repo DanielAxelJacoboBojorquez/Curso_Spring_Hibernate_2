@@ -69,6 +69,18 @@ public class Cliente {
 		elPedido.setCliente(this);
 	}
 	
+	
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+
+
 	//Relación 1 a 1
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id")

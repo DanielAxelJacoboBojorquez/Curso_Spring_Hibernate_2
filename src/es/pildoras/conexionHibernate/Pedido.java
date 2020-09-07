@@ -1,13 +1,16 @@
 package es.pildoras.conexionHibernate;
 
-import java.util.Date;
+import java.util.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="pedido")
 public class Pedido {
-	public Pedido(Date fecha) {
+	
+	public Pedido() {}
+	
+	public Pedido(GregorianCalendar fecha) {
 		this.fecha = fecha;
 	}
 
@@ -45,7 +48,7 @@ public class Pedido {
 	@Column(name="ID")
 	private int id;
 	@Column(name="FECHA")
-	private Date fecha;
+	private GregorianCalendar fecha;
 	@Column(name="FORMA_PAGO")
 	private String formaPago;
 	
