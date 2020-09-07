@@ -64,6 +64,6 @@ public class DetallesCliente {
 	private String comentarios;
 	
 	// Relación OneToOne bidereccional
-	@OneToOne(mappedBy="detallesCliente", cascade=CascadeType.ALL)
+	@OneToOne(mappedBy="detallesCliente"/*, cascade=CascadeType.ALL*/)
 	private Cliente elCliente;
 }

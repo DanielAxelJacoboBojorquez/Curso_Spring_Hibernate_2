@@ -21,7 +21,8 @@ public class EliminaDetallesCliente {
 		// 3.- Crear obj (Clientes)
 		try {
 			miSession.beginTransaction();
-			DetallesCliente detallesDelCliente=miSession.get(DetallesCliente.class, 4);
+			DetallesCliente detallesDelCliente=miSession.get(DetallesCliente.class, 5);
+			detallesDelCliente.getElCliente().setDetallesCliente(null);
 			if(detallesDelCliente!=null) {
 				//System.out.println("Voy a eliminar al cliente "+elCliente.getNombre());
 				miSession.delete(detallesDelCliente);
